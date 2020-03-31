@@ -378,7 +378,7 @@ void init_connection_status_io(void)
 #if (DEVICE_BOARD_NAME == WIZ750SR_1xx)
     #ifdef __USE_TCPCONNECT_STATUS_PIN__
         // TCP connection status pin for WIZ750SR-10x series only
-        init_status_pin();
+       //  init_status_pin();
     #endif
 #endif
 }
