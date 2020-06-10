@@ -856,17 +856,17 @@ void uart_to_ether(uint8_t sock)
 #endif
 	
 	// UART ring buffer -> user's buffer
-	if(sent_len == 0){
+//	if(sent_len == 0){
 		len = get_serial_data();
 		printf("get_serial_data = %d\r\n",len);
-	}
-	else
-	{
-		printf("len = %d\r\n",sent_len);
-	}
+//	}
+//	else
+//	{
+//		printf("len = %d\r\n",sent_len);
+//	}
 	
 	
-	if(len > 0)
+	if(len > 0 && (getSn_TX_FSR(sock) == (getSn_TXBUF_SIZE(sock) << 10)))
 	{
 		add_data_transfer_bytecount(SEG_UART_RX, len);
 		if((serial->serial_debug_en == SEG_DEBUG_S2E) || (serial->serial_debug_en == SEG_DEBUG_ALL))
@@ -904,6 +904,12 @@ void uart_to_ether(uint8_t sock)
 				// Connection password is only checked in the TCP SERVER MODE / TCP MIXED MODE (MIXED_SERVER)
 				if(flag_connect_pw_auth == SEG_ENABLE)
 				{
+					//////////////////////////
+					// James added for DIK
+					if(len > 1024)
+						len = 1024;
+					//////////////////////////
+					
 					sent_len = (int16_t)send(sock, g_send_buf, len);
 					if(sent_len > 0) u2e_size-=sent_len;
 					
