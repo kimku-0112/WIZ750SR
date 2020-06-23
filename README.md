@@ -124,7 +124,8 @@ v1.3.0 Stable
 <p align="center">
   <img width="60%" src="https://user-images.githubusercontent.com/9648281/85361501-0e9a5900-b557-11ea-8173-5ae5aadc46c9.png" />
 </p>
- Subsequent releases, starting with Version v1.3.x, have to set the area in **Boot project**
+ Subsequent releases, starting with Version v1.3.x, have to set the area in Boot project.
+ 
  
 * * *
 v1.2.9 Stable
